@@ -24,13 +24,16 @@ func starterItem() []unit.Item {
 	}
 }
 
-// todo : 이제 할일 - 회복아이템
 func main() {
 	gameSetting()
 
 	var name string
 	fmt.Print("당신의 이름은?")
-	fmt.Scan(&name)
+	_, err := fmt.Scan(&name)
+	if err != nil {
+		fmt.Printf("main error : %v\n", err)
+		return
+	}
 
 	hero := unit.Character{
 		Name: name, HP: 50, Damage: 16,
